@@ -1,0 +1,45 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+package piggybank;
+
+/**
+ *
+ * @author ops.mummidcmp01
+ */
+
+public class Piggybank {
+
+    /**
+     * @param args the command line arguments
+     */
+    private static int balance;
+    private static int lt;
+    
+   
+    static void deposit(int v)
+    {
+        balance=balance+v;
+        lt=v;
+    }
+    
+    static void withdraw(int v)
+    {
+        if(balance>=v)
+        {
+        balance=balance-v;
+        lt=-v;
+        }
+    }
+    
+    static void statement()
+    {
+        System.out.println("the available balance: "+balance);
+        System.out.println("the last transaction: "+lt);
+        
+    }
+}
+
+
