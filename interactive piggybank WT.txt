@@ -1,0 +1,92 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+package piggybank;
+import javax.swing.*;
+
+/**
+ *
+ * @author ops.mummidcmp01
+ */
+public class interactive_piggy {
+    private static  int amount;
+    private static  int balance;
+    private static int ch;
+    private static int [] a=new int[10];
+    static int i;
+    
+    static void display()
+    {
+        JOptionPane.showMessageDialog(null, "Welcome to your PiggyBank");
+        
+        
+        while(ch!=5)
+        {
+            String st=JOptionPane.showInputDialog("Options: 1: Deposit 2. Withdraw 3. Balance Check 4:History 5: Exit ");
+         ch=Integer.parseInt(st);
+        switch(ch)
+        {
+            case 1: String st1=JOptionPane.showInputDialog("Enter the amount you want to deposit");
+                    amount=Integer.parseInt(st1);
+                    deposit(amount);
+                    break;
+            
+            case 2:String st2=JOptionPane.showInputDialog("Enter the amount you want to withdraw");
+                   amount=Integer.parseInt(st2);
+                   withdraw(amount);
+                   break;
+                   
+            case 3:balance_check();
+                   break;
+                   
+            case 4:show();
+                   break;
+            
+            case 5: JOptionPane.showMessageDialog(null,
+                                   "Thankyou for using PiggyBank");
+                    break;       
+                   
+            default: JOptionPane.showMessageDialog(null, "Invalid Choice"); 
+                     break;
+                    
+        }
+        }
+    }
+
+    static void deposit(int v) 
+    {
+       balance=balance+v; 
+      history(v);
+    }
+    
+    static void withdraw(int v)
+    {
+        if(balance>=v)
+        {
+         balance=balance-v;
+         history(-v);
+        }
+        else
+            JOptionPane.showMessageDialog(null, "Not enough balance in your account");
+    }
+    
+    static void balance_check()
+    {
+        JOptionPane.showMessageDialog(null, "Your current balance= "+balance);
+    }
+
+    static void history(int s)
+    {
+         a[i]=s;
+         i++;
+    }
+
+    static void show()
+    {
+        for(int g:a)
+            System.out.print(" "+g);
+    }
+
+}
